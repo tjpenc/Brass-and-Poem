@@ -74,7 +74,7 @@ while (choice != "5")
     }
     else if (choice == "3")
     {
-
+        AddProduct(products, productTypes);
     }
     else if (choice == "4")
     {
@@ -130,6 +130,29 @@ void AddProduct(List<Product> products, List<ProductType> productTypes)
 {
     Console.Clear();
     Console.WriteLine("Add a new product");
+
+    Console.WriteLine("Enter your product name");
+    string productName = Console.ReadLine();
+
+    Console.WriteLine("Enter the products price");
+    decimal productPrice = decimal.Parse(Console.ReadLine());
+
+    Console.WriteLine("Choose if the product is Brass or Poem");
+    for (int i = 0; i < productTypes.Count; i++) 
+    {
+        Console.WriteLine($"{i + 1}. {productTypes[i].Title}");
+    }
+    int productTypeId = int.Parse(Console.ReadLine());
+
+    Product newProduct = new Product
+    {
+        Name = productName,
+        Price = productPrice,
+        ProductTypeId = productTypeId
+    };
+
+    products.Add(newProduct);
+    Console.WriteLine("Product added!");
 }
 
 void UpdateProduct(List<Product> products, List<ProductType> productTypes)
